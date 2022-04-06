@@ -20,6 +20,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blueGrey,
         primaryColor: Colors.blueGrey.shade900,
       ),
+      debugShowCheckedModeBanner: false,
       home: MyHomePage(),
     );
   }
@@ -32,6 +33,7 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _selectedIndex = 0;
+  bool isEng = true;
 
   static const List<Widget> _pages = <Widget>[
     DoctorsList(),
@@ -68,14 +70,36 @@ class _MyHomePageState extends State<MyHomePage> {
                       Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: ElevatedButton(
-                          onPressed: () {},
+                          style: ButtonStyle(
+                            backgroundColor: MaterialStateProperty.all(
+                              isEng
+                                  ? Colors.blueGrey.shade400
+                                  : Colors.blueGrey.shade900,
+                            ),
+                          ),
+                          onPressed: () {
+                            setState(() {
+                              isEng = false;
+                            });
+                          },
                           child: Text("AR"),
                         ),
                       ),
                       Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: ElevatedButton(
-                          onPressed: () {},
+                          style: ButtonStyle(
+                            backgroundColor: MaterialStateProperty.all(
+                              isEng
+                                  ? Colors.blueGrey.shade900
+                                  : Colors.blueGrey.shade400,
+                            ),
+                          ),
+                          onPressed: () {
+                            setState(() {
+                              isEng = true;
+                            });
+                          },
                           child: Text("EN"),
                         ),
                       ),
