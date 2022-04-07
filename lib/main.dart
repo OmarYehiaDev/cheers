@@ -2,7 +2,7 @@
 
 import 'package:cheers/screens/blog.dart';
 import 'package:cheers/screens/doctors.dart';
-import 'package:cheers/screens/profile.dart';
+import 'package:cheers/screens/tests.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -17,8 +17,13 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Cheers',
       theme: ThemeData(
-        primarySwatch: Colors.blueGrey,
-        primaryColor: Colors.blueGrey.shade900,
+        primarySwatch: Colors.blue,
+        primaryColor: Colors.blue.shade900,
+        scaffoldBackgroundColor: Colors.blue.shade50,
+        primaryTextTheme: ThemeData.light().primaryTextTheme,
+        textButtonTheme: ThemeData.light().textButtonTheme,
+        textTheme: ThemeData.light().textTheme,
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue.shade900),
       ),
       debugShowCheckedModeBanner: false,
       home: MyHomePage(),
@@ -38,7 +43,7 @@ class _MyHomePageState extends State<MyHomePage> {
   static const List<Widget> _pages = <Widget>[
     DoctorsList(),
     Blog(),
-    Profile(),
+    Tests(),
   ];
 
   void _onItemTapped(int index) {
@@ -49,18 +54,20 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
+    // double height = MediaQuery.of(context).size.height;
     return SafeArea(
       child: Scaffold(
         appBar: PreferredSize(
-          preferredSize: const Size.fromHeight(kTextTabBarHeight),
+          preferredSize: const Size.fromHeight(kTextTabBarHeight * 1.2),
           child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Row(
-              mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text("Nadeen123"),
-                Container(
+            padding: const EdgeInsets.all(10.0),
+            child: Center(
+              child: ListTile(
+                leading: Image.asset(
+                  "assets/images/logo.png",
+                ),
+                title: Text("Nadeen123"),
+                trailing: Container(
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(25),
                   ),
@@ -73,8 +80,8 @@ class _MyHomePageState extends State<MyHomePage> {
                           style: ButtonStyle(
                             backgroundColor: MaterialStateProperty.all(
                               isEng
-                                  ? Colors.blueGrey.shade400
-                                  : Colors.blueGrey.shade900,
+                                  ? Colors.blue.shade400
+                                  : Colors.blue.shade900,
                             ),
                           ),
                           onPressed: () {
@@ -91,8 +98,8 @@ class _MyHomePageState extends State<MyHomePage> {
                           style: ButtonStyle(
                             backgroundColor: MaterialStateProperty.all(
                               isEng
-                                  ? Colors.blueGrey.shade900
-                                  : Colors.blueGrey.shade400,
+                                  ? Colors.blue.shade900
+                                  : Colors.blue.shade400,
                             ),
                           ),
                           onPressed: () {
@@ -106,7 +113,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     ],
                   ),
                 ),
-              ],
+              ),
             ),
           ),
         ),
@@ -125,8 +132,8 @@ class _MyHomePageState extends State<MyHomePage> {
               label: 'Blog',
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.account_box),
-              label: 'Profile',
+              icon: Icon(Icons.pending_actions),
+              label: 'Tests',
             ),
           ],
           currentIndex: _selectedIndex,

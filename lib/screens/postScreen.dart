@@ -41,10 +41,17 @@ class _PostScreenState extends State<PostScreen> {
                 pageSnapping: true,
                 scrollDirection: Axis.horizontal,
                 itemCount: _post.images.length,
-                itemBuilder: (context, index) => Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Image.network(
-                    _post.images[index],
+                itemBuilder: (context, index) => Card(
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Center(
+                      child: Text(
+                        "Post No." + _post.id.toString(),
+                        style: TextStyle(
+                          fontSize: 24,
+                        ),
+                      ),
+                    ),
                   ),
                 ),
               ),

@@ -15,20 +15,27 @@ class DoctorWidget extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Card(
-        color: Colors.lightBlue,
+        color: Colors.lightBlue.shade400,
         child: ListTile(
           leading: Image.network(doctor.image),
-          title: Text(doctor.firstName + " " + doctor.lastName),
+          title: Text(
+            doctor.firstName + " " + doctor.lastName,
+            overflow: TextOverflow.ellipsis,
+          ),
           isThreeLine: true,
           subtitle: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(doctor.company.title),
+              Text(
+                doctor.company.title,
+                overflow: TextOverflow.ellipsis,
+              ),
               Row(
                 children: [
                   Text(
                     (doctor.weight / 10).floor().toString(),
+                    overflow: TextOverflow.ellipsis,
                   ),
                   Icon(
                     Icons.star,
@@ -36,7 +43,10 @@ class DoctorWidget extends StatelessWidget {
                   ),
                 ],
               ),
-              Text("Session: ${doctor.height} EGP"),
+              Text(
+                "Session: ${doctor.height} EGP",
+                overflow: TextOverflow.ellipsis,
+              ),
             ],
           ),
           onTap: () {
@@ -48,6 +58,11 @@ class DoctorWidget extends StatelessWidget {
             );
           },
           trailing: ElevatedButton.icon(
+            style: ButtonStyle(
+              backgroundColor: MaterialStateProperty.all(
+                Colors.blue.shade700,
+              ),
+            ),
             icon: Icon(Icons.call),
             label: Text("Book"),
             onPressed: () {

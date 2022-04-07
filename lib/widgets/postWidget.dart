@@ -27,7 +27,7 @@ class PostWidget extends StatelessWidget {
           );
         },
         child: Card(
-          color: Colors.blueGrey.shade300,
+          color: Colors.blue.shade300,
           child: Column(
             children: [
               Padding(
@@ -35,10 +35,18 @@ class PostWidget extends StatelessWidget {
                 child: SizedBox(
                   width: width * 0.85,
                   height: height * 0.2,
-                  child: Image.network(
-                    post.thumbnail,
-                    fit: BoxFit.fill,
+                  child: Center(
+                    child: Text(
+                      "Post No." + post.id.toString(),
+                      style: TextStyle(
+                        fontSize: 24,
+                      ),
+                    ),
                   ),
+                  // child: Image.network(
+                  //   post.thumbnail,
+                  //   fit: BoxFit.fill,
+                  // ),
                 ),
               ),
               Row(
