@@ -16,7 +16,6 @@ class TestWidget extends StatelessWidget {
       padding: const EdgeInsets.all(8.0),
       child: Card(
         color: Colors.blue.shade900,
-        
         child: Column(
           children: [
             Padding(
