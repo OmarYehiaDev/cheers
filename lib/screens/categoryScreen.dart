@@ -24,7 +24,9 @@ class CategoryScreen extends StatelessWidget {
         builder: (context, snapshot) {
           if (snapshot.hasData) {
             List<Post> _posts = snapshot.data!;
-            return SingleChildScrollView(child: PostsList(posts: _posts));
+            return SingleChildScrollView(
+              child: PostsList(posts: _posts),
+            );
           } else if (snapshot.hasError) {
             return Text('${snapshot.error}');
           }

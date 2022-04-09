@@ -19,7 +19,7 @@ class DoctorWidget extends StatelessWidget {
         child: ListTile(
           leading: Image.network(doctor.image),
           title: Text(
-            doctor.firstName + " " + doctor.lastName,
+            "Dr. " + doctor.firstName + " " + doctor.lastName,
             overflow: TextOverflow.ellipsis,
           ),
           isThreeLine: true,
