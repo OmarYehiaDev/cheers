@@ -24,23 +24,28 @@ class DoctorWidget extends StatelessWidget {
           ),
           isThreeLine: true,
           subtitle: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
                 doctor.company.title,
                 overflow: TextOverflow.ellipsis,
               ),
               Row(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
                     (doctor.weight / 10).floor().toString(),
                     overflow: TextOverflow.ellipsis,
                   ),
-                  Icon(
-                    Icons.star,
-                    color: Colors.yellow,
-                  ),
+                  Wrap(
+                    children: List<Widget>.generate(
+                      5,
+                      (index) => Icon(
+                        Icons.star,
+                        color: Colors.yellow,
+                        size: 20,
+                      ),
+                    ),
+                  )
                 ],
               ),
               Text(
