@@ -31,7 +31,7 @@ class ReviewWidget extends StatelessWidget {
         isThreeLine: true,
         title: Text(
           review.user.username,
-          style: TextStyle(color: Colors.white),
+          style: TextStyle(color: Colors.yellowAccent),
         ),
         subtitle: Text(
           review.body,
