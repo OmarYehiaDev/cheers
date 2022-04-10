@@ -18,7 +18,10 @@ class PostsList extends StatelessWidget {
       shrinkWrap: true,
       itemBuilder: (context, index) {
         Post _post = posts[index];
-        return PostWidget(post: _post);
+        return PostWidget(
+          post: _post,
+          index: index,
+        );
       },
       itemCount: 4,
     );

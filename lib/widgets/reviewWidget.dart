@@ -11,21 +11,49 @@ class ReviewWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
+      color: Color.fromRGBO(18, 55, 100, 0.65),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.only(
+          topRight: Radius.circular(
+            30,
+          ),
+          bottomLeft: Radius.circular(
+            30,
+          ),
+        ),
+      ),
       child: ListTile(
-        leading: Icon(Icons.person),
+        leading: Icon(
+          Icons.person,
+          color: Colors.white,
+          size: 35,
+        ),
         isThreeLine: true,
-        title: Text(review.user.username),
-        subtitle: Text(review.body),
+        title: Text(
+          review.user.username,
+          style: TextStyle(color: Colors.white),
+        ),
+        subtitle: Text(
+          review.body,
+          style: TextStyle(color: Colors.white),
+        ),
         trailing: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
             Text(
               (review.user.id / 10).floor().toString(),
               overflow: TextOverflow.ellipsis,
+              style: TextStyle(color: Colors.white),
             ),
-            Icon(
-              Icons.star,
-              color: Colors.yellow,
+            Wrap(
+              children: List<Widget>.generate(
+                5,
+                (index) => Icon(
+                  Icons.star,
+                  color: Colors.yellow,
+                  size: 20,
+                ),
+              ),
             ),
           ],
         ),

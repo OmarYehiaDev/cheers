@@ -38,36 +38,36 @@ class _BlogState extends State<Blog> {
           return SingleChildScrollView(
             child: Column(
               children: [
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: SizedBox(
-                    height: height * 0.05,
-                    child: ListView.builder(
-                      scrollDirection: Axis.horizontal,
-                      itemBuilder: (context, index) {
-                        String _cat = _cats[index];
-                        return Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: ElevatedButton(
-                            onPressed: () {
-                              print(_cat + " ${index + 1}");
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (_) =>
-                                      CategoryScreen(category: _cat),
-                                ),
-                              );
-                            },
-                            child: Text(_cat),
-                          ),
-                        );
-                      },
-                      itemCount: _cats.length,
-                      shrinkWrap: true,
-                    ),
-                  ),
-                ),
+                // Padding(
+                //   padding: const EdgeInsets.all(8.0),
+                //   child: SizedBox(
+                //     height: height * 0.05,
+                //     child: ListView.builder(
+                //       scrollDirection: Axis.horizontal,
+                //       itemBuilder: (context, index) {
+                //         String _cat = _cats[index];
+                //         return Padding(
+                //           padding: const EdgeInsets.all(8.0),
+                //           child: ElevatedButton(
+                //             onPressed: () {
+                //               print(_cat + " ${index + 1}");
+                //               Navigator.push(
+                //                 context,
+                //                 MaterialPageRoute(
+                //                   builder: (_) =>
+                //                       CategoryScreen(category: _cat),
+                //                 ),
+                //               );
+                //             },
+                //             child: Text(_cat),
+                //           ),
+                //         );
+                //       },
+                //       itemCount: _cats.length,
+                //       shrinkWrap: true,
+                //     ),
+                //   ),
+                // ),
                 PostsList(posts: _posts),
               ],
             ),

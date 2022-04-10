@@ -4,11 +4,15 @@ import 'package:cheers/models/post.dart';
 import 'package:cheers/screens/postScreen.dart';
 import 'package:flutter/material.dart';
 
+import '../utils/utils.dart';
+
 class PostWidget extends StatelessWidget {
   final Post post;
+  final int index;
   const PostWidget({
     Key? key,
     required this.post,
+    required this.index,
   }) : super(key: key);
 
   @override
@@ -22,46 +26,45 @@ class PostWidget extends StatelessWidget {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (_) => PostScreen(post: post),
+              builder: (_) => PostScreen(
+                post: post,
+                index: index,
+              ),
             ),
           );
         },
         child: Card(
-          color: Colors.blue.shade300,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(
+              30,
+            ),
+          ),
+          color: Colors.blue.shade100,
           child: Column(
             children: [
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: SizedBox(
-                  width: width * 0.85,
-                  height: height * 0.2,
-                  child: Center(
-                    child: Text(
-                      "Post No." + post.id.toString(),
-                      style: TextStyle(
-                        fontSize: 24,
-                      ),
-                    ),
+              Center(
+                child: ClipRRect(
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(30),
+                    topRight: Radius.circular(30),
                   ),
-                  // child: Image.network(
-                  //   post.thumbnail,
-                  //   fit: BoxFit.fill,
-                  // ),
+                  child: Image.asset(
+                    images[index],
+                    fit: BoxFit.fitWidth,
+                    width: width * 0.95,
+                    height: height * 0.2,
+                  ),
                 ),
               ),
-              Row(
-                mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Text(post.title),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Text(
+                  names[index],
+                  style: TextStyle(
+                    fontSize: 15,
+                    fontWeight: FontWeight.bold,
                   ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Text("${post.price} reaction"),
-                  ),
-                ],
+                ),
               ),
             ],
           ),

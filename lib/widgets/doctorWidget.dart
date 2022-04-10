@@ -33,101 +33,125 @@ class DoctorWidget extends StatelessWidget {
         ),
         child: SizedBox(
           width: width * 0.9,
-          height: height * 0.22,
+          height: height * 0.28,
           child: Column(
             children: [
-              ListTile(
-                leading: Image.network(
-                  doctor.image,
-                  height: height * 0.073,
-                ),
-                title: Center(
-                  child: Text(
-                    "Dr. " + doctor.firstName + " " + doctor.lastName,
-                    overflow: TextOverflow.ellipsis,
-                    style: TextStyle(
-                      color: Colors.white,
-                    ),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: ListTile(
+                  leading: Image.network(
+                    doctor.image,
+                    height: height * 0.073,
                   ),
-                ),
-                isThreeLine: true,
-                subtitle: Column(
-                  children: [
-                    Text(
-                      doctor.company.title,
+                  title: Center(
+                    child: Text(
+                      "Dr. " + doctor.firstName + " " + doctor.lastName,
                       overflow: TextOverflow.ellipsis,
                       style: TextStyle(
                         color: Colors.white,
                       ),
                     ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          (doctor.weight / 10).floor().toString(),
-                          overflow: TextOverflow.ellipsis,
-                          style: TextStyle(
-                            color: Colors.white,
-                          ),
+                  ),
+                  isThreeLine: true,
+                  subtitle: Column(
+                    children: [
+                      Text(
+                        doctor.company.title,
+                        overflow: TextOverflow.ellipsis,
+                        style: TextStyle(
+                          color: Colors.white,
                         ),
-                        Wrap(
-                          children: List<Widget>.generate(
-                            5,
-                            (index) => Icon(
-                              Icons.star,
-                              color: Colors.yellow,
-                              size: 20,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            (doctor.weight / 10).floor().toString(),
+                            overflow: TextOverflow.ellipsis,
+                            style: TextStyle(
+                              color: Colors.white,
                             ),
                           ),
+                          Wrap(
+                            children: List<Widget>.generate(
+                              5,
+                              (index) => Icon(
+                                Icons.star,
+                                color: Colors.yellow,
+                                size: 20,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                  trailing: InkWell(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (_) => DoctorScreen(doctor: doctor),
                         ),
-                      ],
-                    ),
-                  ],
-                ),
-                trailing: InkWell(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (_) => DoctorScreen(doctor: doctor),
+                      );
+                    },
+                    child: Container(
+                      height: height * 0.15,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.only(
+                          bottomLeft: Radius.circular(25),
+                          bottomRight: Radius.circular(25),
+                        ),
+                        color: Colors.yellowAccent,
                       ),
-                    );
-                  },
-                  child: Container(
-                    height: height * 0.15,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.only(
-                        bottomLeft: Radius.circular(25),
-                        bottomRight: Radius.circular(25),
-                      ),
-                      color: Colors.yellowAccent,
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.all(10.0),
-                      child: Text(
-                        "View\nProfile",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          color: Color(0xFF012A4A),
-                          fontSize: 17,
-                          fontWeight: FontWeight.bold,
+                      child: Padding(
+                        padding: const EdgeInsets.all(10.0),
+                        child: Text(
+                          "View\nProfile",
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                            color: Color(0xFF012A4A),
+                            fontSize: 17,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                       ),
                     ),
                   ),
                 ),
               ),
+              RichText(
+                text: TextSpan(
+                  text: "Specialized in: ",
+                  style: TextStyle(
+                    shadows: kElevationToShadow[4],
+                    color: Colors.blue.shade300,
+                    fontWeight: FontWeight.bold,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                  children: [
+                    TextSpan(
+                      text: "Depression, Anxiety",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.normal,
+                      ),
+                    ),
+                  ],
+                ),
+                overflow: TextOverflow.ellipsis,
+              ),
               Row(
-                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Padding(
-                    padding: const EdgeInsets.all(8.0),
+                    padding: const EdgeInsets.all(16.0),
                     child: RichText(
                       text: TextSpan(
                         text: "Session: ",
                         style: TextStyle(
                           shadows: kElevationToShadow[4],
-                          color: Colors.blue.shade600,
+                          color: Colors.blue.shade300,
                           fontWeight: FontWeight.bold,
                           overflow: TextOverflow.ellipsis,
                         ),
@@ -143,27 +167,6 @@ class DoctorWidget extends StatelessWidget {
                       ),
                       overflow: TextOverflow.ellipsis,
                     ),
-                  ),
-                  RichText(
-                    text: TextSpan(
-                      text: "Specialized in: ",
-                      style: TextStyle(
-                        shadows: kElevationToShadow[4],
-                        color: Colors.blue.shade600,
-                        fontWeight: FontWeight.bold,
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                      children: [
-                        TextSpan(
-                          text: "Depression, Anxiety",
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.normal,
-                          ),
-                        ),
-                      ],
-                    ),
-                    overflow: TextOverflow.ellipsis,
                   ),
                 ],
               ),
@@ -183,7 +186,7 @@ class DoctorWidget extends StatelessWidget {
                         ),
                       ),
                       side: BorderSide(
-                        color: Color(0xFF012A4A),
+                        color: Colors.yellowAccent,
                         width: 2,
                       ),
                     ),
@@ -200,7 +203,7 @@ class DoctorWidget extends StatelessWidget {
                   child: Text(
                     "Book",
                     style: TextStyle(
-                      color: Color(0xFF012A4A),
+                      color: Colors.yellowAccent,
                       backgroundColor: Colors.transparent,
                       fontSize: 17,
                       fontWeight: FontWeight.bold,
