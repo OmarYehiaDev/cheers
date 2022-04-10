@@ -22,10 +22,8 @@ class _DoctorScreenState extends State<DoctorScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leadingWidth: 35,
         title: Text("Dr. ${widget.doctor.firstName}'s Profile"),
-        actions: [
-
-        ],
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -201,7 +199,7 @@ class _DoctorScreenState extends State<DoctorScreen> {
             ),
             Container(
               width: MediaQuery.of(context).size.width,
-              margin: EdgeInsets.only(right: 20,left: 20),
+              margin: EdgeInsets.only(right: 20, left: 20),
               child: Padding(
                 padding: const EdgeInsets.all(5.0),
                 child: ElevatedButton.icon(

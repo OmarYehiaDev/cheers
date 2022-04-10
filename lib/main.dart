@@ -24,6 +24,9 @@ class MyApp extends StatelessWidget {
         textButtonTheme: ThemeData.light().textButtonTheme,
         textTheme: ThemeData.light().textTheme,
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue.shade900),
+        appBarTheme: AppBarTheme(
+          backgroundColor: Color(0xFF012A4A),
+        ),
       ),
       debugShowCheckedModeBanner: false,
       home: MyHomePage(),
