@@ -154,7 +154,6 @@ class _DoctorScreenState extends State<DoctorScreen> {
                   Container(
                     decoration: BoxDecoration(
                       boxShadow: [
-                        // TODO: Edit Shadows
                         // BoxShadow(
                         //   offset: Offset(0, 0),
                         //   blurRadius: 20,
