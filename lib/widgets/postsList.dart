@@ -20,7 +20,7 @@ class PostsList extends StatelessWidget {
         Post _post = posts[index];
         return PostWidget(post: _post);
       },
-      itemCount: posts.length,
+      itemCount: 4,
     );
   }
 }
