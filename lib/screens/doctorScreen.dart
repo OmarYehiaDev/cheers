@@ -30,6 +30,18 @@ class _DoctorScreenState extends State<DoctorScreen> {
               backgroundColor: MaterialStateProperty.all(
                 Colors.blue.shade900,
               ),
+              shape: MaterialStateProperty.all(
+                RoundedRectangleBorder(
+                  borderRadius: BorderRadius.only(
+                    topRight: Radius.circular(
+                      30,
+                    ),
+                    bottomLeft: Radius.circular(
+                      30,
+                    ),
+                  ),
+                ),
+              ),
               elevation: MaterialStateProperty.all(
                 12,
               ),
@@ -68,28 +80,22 @@ class _DoctorScreenState extends State<DoctorScreen> {
                 style: TextStyle(
                   color: Colors.blue,
                   fontWeight: FontWeight.bold,
-                  shadows: kElevationToShadow[4],
                 ),
               ),
-              trailing: Text("Egypt",
-                  style: TextStyle(
-                    shadows: kElevationToShadow[4],
-                  )),
+              trailing: Text(
+                "Egypt",
+              ),
             ),
             ListTile(
               title: Text(
                 "Joined : ",
                 style: TextStyle(
-                  shadows: kElevationToShadow[4],
                   color: Colors.blue,
                   fontWeight: FontWeight.bold,
                 ),
               ),
               trailing: Text(
                 (widget.doctor.weight / 20).floor().toString() + " years ago",
-                style: TextStyle(
-                  shadows: kElevationToShadow[4],
-                ),
               ),
             ),
             ListTile(
@@ -98,14 +104,10 @@ class _DoctorScreenState extends State<DoctorScreen> {
                 style: TextStyle(
                   color: Colors.blue,
                   fontWeight: FontWeight.bold,
-                  shadows: kElevationToShadow[4],
                 ),
               ),
               trailing: Text(
                 widget.doctor.company.department,
-                style: TextStyle(
-                  shadows: kElevationToShadow[4],
-                ),
               ),
             ),
             ListTile(
@@ -114,14 +116,10 @@ class _DoctorScreenState extends State<DoctorScreen> {
                 style: TextStyle(
                   color: Colors.blue,
                   fontWeight: FontWeight.bold,
-                  shadows: kElevationToShadow[4],
                 ),
               ),
               trailing: Text(
                 widget.doctor.company.title,
-                style: TextStyle(
-                  shadows: kElevationToShadow[4],
-                ),
               ),
             ),
             ListTile(
@@ -130,16 +128,12 @@ class _DoctorScreenState extends State<DoctorScreen> {
                 style: TextStyle(
                   color: Colors.blue,
                   fontWeight: FontWeight.bold,
-                  shadows: kElevationToShadow[4],
                 ),
               ),
               trailing: Text(
                 widget.doctor.address.address +
                     ", " +
                     widget.doctor.address.city,
-                style: TextStyle(
-                  shadows: kElevationToShadow[4],
-                ),
               ),
             ),
             ListTile(
@@ -148,7 +142,6 @@ class _DoctorScreenState extends State<DoctorScreen> {
                 style: TextStyle(
                   color: Colors.blue,
                   fontWeight: FontWeight.bold,
-                  shadows: kElevationToShadow[4],
                 ),
               ),
               trailing: Row(
@@ -157,18 +150,16 @@ class _DoctorScreenState extends State<DoctorScreen> {
                   Text(
                     (widget.doctor.weight / 10).floor().toString(),
                     overflow: TextOverflow.ellipsis,
-                    style: TextStyle(
-                      shadows: kElevationToShadow[4],
-                    ),
                   ),
                   Container(
                     decoration: BoxDecoration(
                       boxShadow: [
-                        BoxShadow(
-                          offset: Offset(0, 0),
-                          blurRadius: 20,
-                          spreadRadius: 5,
-                        ),
+                        // TODO: Edit Shadows
+                        // BoxShadow(
+                        //   offset: Offset(0, 0),
+                        //   blurRadius: 20,
+                        //   spreadRadius: 5,
+                        // ),
                       ],
                     ),
                     child: Wrap(
@@ -191,13 +182,24 @@ class _DoctorScreenState extends State<DoctorScreen> {
                 style: TextStyle(
                   color: Colors.blue,
                   fontWeight: FontWeight.bold,
-                  shadows: kElevationToShadow[4],
                 ),
               ),
               trailing: ElevatedButton.icon(
                 style: ButtonStyle(
                   backgroundColor: MaterialStateProperty.all(
                     Color(0xFF012A4A),
+                  ),
+                  shape: MaterialStateProperty.all(
+                    RoundedRectangleBorder(
+                      borderRadius: BorderRadius.only(
+                        topRight: Radius.circular(
+                          30,
+                        ),
+                        bottomLeft: Radius.circular(
+                          30,
+                        ),
+                      ),
+                    ),
                   ),
                 ),
                 icon: Icon(Icons.more_horiz),
@@ -218,7 +220,6 @@ class _DoctorScreenState extends State<DoctorScreen> {
                 style: TextStyle(
                   color: Colors.blue,
                   fontWeight: FontWeight.bold,
-                  shadows: kElevationToShadow[4],
                 ),
               ),
             ),
@@ -267,6 +268,18 @@ class _DoctorScreenState extends State<DoctorScreen> {
                 padding: const EdgeInsets.all(5.0),
                 child: ElevatedButton.icon(
                   style: ButtonStyle(
+                    shape: MaterialStateProperty.all(
+                      RoundedRectangleBorder(
+                        borderRadius: BorderRadius.only(
+                          topRight: Radius.circular(
+                            30,
+                          ),
+                          bottomLeft: Radius.circular(
+                            30,
+                          ),
+                        ),
+                      ),
+                    ),
                     backgroundColor: MaterialStateProperty.all(
                       Color(0xFF012A4A),
                     ),
