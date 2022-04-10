@@ -24,6 +24,28 @@ class _DoctorScreenState extends State<DoctorScreen> {
       appBar: AppBar(
         leadingWidth: 35,
         title: Text("Dr. ${widget.doctor.firstName}'s Profile"),
+        actions: [
+          ElevatedButton.icon(
+            style: ButtonStyle(
+              backgroundColor: MaterialStateProperty.all(
+                Colors.blue.shade900,
+              ),
+              elevation: MaterialStateProperty.all(
+                12,
+              ),
+            ),
+            icon: Icon(Icons.login),
+            label: Text("Login"),
+            onPressed: () {
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  backgroundColor: Colors.green,
+                  content: Text("Logged in successfully"),
+                ),
+              );
+            },
+          ),
+        ],
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -46,20 +68,28 @@ class _DoctorScreenState extends State<DoctorScreen> {
                 style: TextStyle(
                   color: Colors.blue,
                   fontWeight: FontWeight.bold,
+                  shadows: kElevationToShadow[4],
                 ),
               ),
-              trailing: Text("Egypt"),
+              trailing: Text("Egypt",
+                  style: TextStyle(
+                    shadows: kElevationToShadow[4],
+                  )),
             ),
             ListTile(
               title: Text(
                 "Joined : ",
                 style: TextStyle(
+                  shadows: kElevationToShadow[4],
                   color: Colors.blue,
                   fontWeight: FontWeight.bold,
                 ),
               ),
               trailing: Text(
                 (widget.doctor.weight / 20).floor().toString() + " years ago",
+                style: TextStyle(
+                  shadows: kElevationToShadow[4],
+                ),
               ),
             ),
             ListTile(
@@ -68,9 +98,15 @@ class _DoctorScreenState extends State<DoctorScreen> {
                 style: TextStyle(
                   color: Colors.blue,
                   fontWeight: FontWeight.bold,
+                  shadows: kElevationToShadow[4],
                 ),
               ),
-              trailing: Text(widget.doctor.company.department),
+              trailing: Text(
+                widget.doctor.company.department,
+                style: TextStyle(
+                  shadows: kElevationToShadow[4],
+                ),
+              ),
             ),
             ListTile(
               title: Text(
@@ -78,9 +114,15 @@ class _DoctorScreenState extends State<DoctorScreen> {
                 style: TextStyle(
                   color: Colors.blue,
                   fontWeight: FontWeight.bold,
+                  shadows: kElevationToShadow[4],
                 ),
               ),
-              trailing: Text(widget.doctor.company.title),
+              trailing: Text(
+                widget.doctor.company.title,
+                style: TextStyle(
+                  shadows: kElevationToShadow[4],
+                ),
+              ),
             ),
             ListTile(
               title: Text(
@@ -88,12 +130,16 @@ class _DoctorScreenState extends State<DoctorScreen> {
                 style: TextStyle(
                   color: Colors.blue,
                   fontWeight: FontWeight.bold,
+                  shadows: kElevationToShadow[4],
                 ),
               ),
               trailing: Text(
                 widget.doctor.address.address +
                     ", " +
                     widget.doctor.address.city,
+                style: TextStyle(
+                  shadows: kElevationToShadow[4],
+                ),
               ),
             ),
             ListTile(
@@ -102,6 +148,7 @@ class _DoctorScreenState extends State<DoctorScreen> {
                 style: TextStyle(
                   color: Colors.blue,
                   fontWeight: FontWeight.bold,
+                  shadows: kElevationToShadow[4],
                 ),
               ),
               trailing: Row(
@@ -110,14 +157,28 @@ class _DoctorScreenState extends State<DoctorScreen> {
                   Text(
                     (widget.doctor.weight / 10).floor().toString(),
                     overflow: TextOverflow.ellipsis,
+                    style: TextStyle(
+                      shadows: kElevationToShadow[4],
+                    ),
                   ),
-                  Wrap(
-                    children: List<Widget>.generate(
-                      5,
-                      (index) => Icon(
-                        Icons.star,
-                        color: Colors.yellow,
-                        size: 20,
+                  Container(
+                    decoration: BoxDecoration(
+                      boxShadow: [
+                        BoxShadow(
+                          offset: Offset(0, 0),
+                          blurRadius: 20,
+                          spreadRadius: 5,
+                        ),
+                      ],
+                    ),
+                    child: Wrap(
+                      children: List<Widget>.generate(
+                        5,
+                        (index) => Icon(
+                          Icons.star,
+                          color: Colors.yellow,
+                          size: 20,
+                        ),
                       ),
                     ),
                   ),
@@ -130,6 +191,7 @@ class _DoctorScreenState extends State<DoctorScreen> {
                 style: TextStyle(
                   color: Colors.blue,
                   fontWeight: FontWeight.bold,
+                  shadows: kElevationToShadow[4],
                 ),
               ),
               trailing: ElevatedButton.icon(
@@ -156,6 +218,7 @@ class _DoctorScreenState extends State<DoctorScreen> {
                 style: TextStyle(
                   color: Colors.blue,
                   fontWeight: FontWeight.bold,
+                  shadows: kElevationToShadow[4],
                 ),
               ),
             ),
