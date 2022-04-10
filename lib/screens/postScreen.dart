@@ -19,17 +19,17 @@ class PostScreen extends StatefulWidget {
 }
 
 class _PostScreenState extends State<PostScreen> {
-  late PageController _pageController;
+  // late PageController _pageController;
 
   @override
   void initState() {
     super.initState();
-    _pageController = PageController(viewportFraction: 0.85);
+    // _pageController = PageController(viewportFraction: 0.85);
   }
 
   @override
   Widget build(BuildContext context) {
-    final Post _post = widget.post;
+    // final Post _post = widget.post;
 
     double height = MediaQuery.of(context).size.height;
     return Scaffold(

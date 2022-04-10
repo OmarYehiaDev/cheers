@@ -1,8 +1,8 @@
 // ignore_for_file: prefer_const_constructors, avoid_print
 
-import 'dart:collection';
+// import 'dart:collection';
 
-import 'package:cheers/screens/categoryScreen.dart';
+// import 'package:cheers/screens/categoryScreen.dart';
 
 import '../models/post.dart';
 import 'package:cheers/services/api.dart';
@@ -21,7 +21,7 @@ class _BlogState extends State<Blog> {
   final List<String> temp = [];
   @override
   Widget build(BuildContext context) {
-    double height = MediaQuery.of(context).size.height;
+    // double height = MediaQuery.of(context).size.height;
     return FutureBuilder<List<Post>>(
       future: api.getPosts(),
       builder: (context, snapshot) {
@@ -33,7 +33,7 @@ class _BlogState extends State<Blog> {
             temp.add(_post.category);
           }
 
-          final List<String> _cats = LinkedHashSet<String>.from(temp).toList();
+          // final List<String> _cats = LinkedHashSet<String>.from(temp).toList();
 
           return SingleChildScrollView(
             child: Column(
