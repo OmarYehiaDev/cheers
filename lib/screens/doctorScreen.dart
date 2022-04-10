@@ -24,32 +24,7 @@ class _DoctorScreenState extends State<DoctorScreen> {
       appBar: AppBar(
         title: Text("Dr. ${widget.doctor.firstName}'s Profile"),
         actions: [
-          Container(
-            margin: EdgeInsets.only(right: 30),
-            child: Padding(
-              padding: const EdgeInsets.all(5.0),
-              child: ElevatedButton.icon(
-                style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all(
-                    Color(0xFF012A4A),
-                  ),
-                  elevation: MaterialStateProperty.all(
-                    12,
-                  ),
-                ),
-                icon: Icon(Icons.call),
-                label: Text("Book"),
-                onPressed: () {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(
-                      backgroundColor: Colors.green,
-                      content: Text("Booked successfully"),
-                    ),
-                  );
-                },
-              ),
-            ),
-          ),
+
         ],
       ),
       body: SingleChildScrollView(
@@ -222,7 +197,37 @@ class _DoctorScreenState extends State<DoctorScreen> {
               },
             ),
             SizedBox(
-              height: 100,
+              height: 50,
+            ),
+            Container(
+              width: MediaQuery.of(context).size.width,
+              margin: EdgeInsets.only(right: 20,left: 20),
+              child: Padding(
+                padding: const EdgeInsets.all(5.0),
+                child: ElevatedButton.icon(
+                  style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all(
+                      Color(0xFF012A4A),
+                    ),
+                    elevation: MaterialStateProperty.all(
+                      12,
+                    ),
+                  ),
+                  icon: Icon(Icons.call),
+                  label: Text("Book"),
+                  onPressed: () {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        backgroundColor: Colors.green,
+                        content: Text("Booked successfully"),
+                      ),
+                    );
+                  },
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 50,
             ),
           ],
         ),
