@@ -28,7 +28,7 @@ class _DoctorScreenState extends State<DoctorScreen> {
           ElevatedButton.icon(
             style: ButtonStyle(
               backgroundColor: MaterialStateProperty.all(
-                Colors.blue.shade900,
+                Color(0xFF012A4A),
               ),
               shape: MaterialStateProperty.all(
                 RoundedRectangleBorder(
