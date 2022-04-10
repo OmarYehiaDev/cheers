@@ -32,10 +32,13 @@ class _PostScreenState extends State<PostScreen> {
     // final Post _post = widget.post;
 
     double height = MediaQuery.of(context).size.height;
+    double width = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
         title: Text(
           names[widget.index],
+          textDirection: TextDirection.rtl,
+          textAlign: TextAlign.justify,
         ),
         centerTitle: true,
       ),
@@ -51,12 +54,18 @@ class _PostScreenState extends State<PostScreen> {
               //   scrollDirection: Axis.horizontal,
               //   itemCount: _post.images.length,
               //   itemBuilder: (context, index) =>
-              child: Card(
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Center(
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Center(
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(30),
+                      topRight: Radius.circular(30),
+                    ),
                     child: Image.asset(
                       images[widget.index],
+                      fit: BoxFit.fitWidth,
+                      width: width * 0.95,
                     ),
                   ),
                 ),
@@ -68,8 +77,9 @@ class _PostScreenState extends State<PostScreen> {
               padding: const EdgeInsets.all(16.0),
               child: Text(
                 contents[widget.index],
-                style: TextStyle(fontSize: 20),
+                textDirection: TextDirection.rtl,
                 textAlign: TextAlign.justify,
+                style: TextStyle(fontSize: 20),
               ),
             ),
           ],

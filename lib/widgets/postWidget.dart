@@ -60,6 +60,8 @@ class PostWidget extends StatelessWidget {
                 padding: const EdgeInsets.all(8.0),
                 child: Text(
                   names[index],
+                  textDirection: TextDirection.rtl,
+                  textAlign: TextAlign.justify,
                   style: TextStyle(
                     fontSize: 15,
                     fontWeight: FontWeight.bold,
