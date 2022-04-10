@@ -23,24 +23,32 @@ class _DoctorScreenState extends State<DoctorScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text("Dr. ${widget.doctor.firstName}'s Profile"),
-        centerTitle: true,
         actions: [
-          TextButton.icon(
-            style: ButtonStyle(
-              foregroundColor: MaterialStateProperty.all(
-                Colors.white,
+          Container(
+            margin: EdgeInsets.only(right: 30),
+            child: Padding(
+              padding: const EdgeInsets.all(5.0),
+              child: ElevatedButton.icon(
+                style: ButtonStyle(
+                  backgroundColor: MaterialStateProperty.all(
+                    Color(0xFF012A4A),
+                  ),
+                  elevation: MaterialStateProperty.all(
+                    12,
+                  ),
+                ),
+                icon: Icon(Icons.call),
+                label: Text("Book"),
+                onPressed: () {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      backgroundColor: Colors.green,
+                      content: Text("Booked successfully"),
+                    ),
+                  );
+                },
               ),
             ),
-            icon: Icon(Icons.call),
-            label: Text("Book"),
-            onPressed: () {
-              ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(
-                  backgroundColor: Colors.green,
-                  content: Text("Booked successfully"),
-                ),
-              );
-            },
           ),
         ],
       ),
@@ -60,25 +68,55 @@ class _DoctorScreenState extends State<DoctorScreen> {
                 widget.doctor.lastName),
             Text(widget.doctor.company.title),
             ListTile(
-              title: Text("Country : "),
+              title: Text(
+                "Country : ",
+                style: TextStyle(
+                  color: Colors.blue,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
               trailing: Text("Egypt"),
             ),
             ListTile(
-              title: Text("Joined : "),
+              title: Text(
+                "Joined : ",
+                style: TextStyle(
+                  color: Colors.blue,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
               trailing: Text(
                 (widget.doctor.weight / 20).floor().toString() + " years ago",
               ),
             ),
             ListTile(
-              title: Text("Main Focus : "),
+              title: Text(
+                "Main Focus : ",
+                style: TextStyle(
+                  color: Colors.blue,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
               trailing: Text(widget.doctor.company.department),
             ),
             ListTile(
-              title: Text("Specialities : "),
+              title: Text(
+                "Specialities : ",
+                style: TextStyle(
+                  color: Colors.blue,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
               trailing: Text(widget.doctor.company.title),
             ),
             ListTile(
-              title: Text("Address : "),
+              title: Text(
+                "Address : ",
+                style: TextStyle(
+                  color: Colors.blue,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
               trailing: Text(
                 widget.doctor.address.address +
                     ", " +
@@ -86,7 +124,13 @@ class _DoctorScreenState extends State<DoctorScreen> {
               ),
             ),
             ListTile(
-              title: Text("Average Rating : "),
+              title: Text(
+                "Average Rating : ",
+                style: TextStyle(
+                  color: Colors.blue,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
               trailing: Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
@@ -94,19 +138,31 @@ class _DoctorScreenState extends State<DoctorScreen> {
                     (widget.doctor.weight / 10).floor().toString(),
                     overflow: TextOverflow.ellipsis,
                   ),
-                  Icon(
-                    Icons.star,
-                    color: Colors.yellow,
+                  Wrap(
+                    children: List<Widget>.generate(
+                      5,
+                      (index) => Icon(
+                        Icons.star,
+                        color: Colors.yellow,
+                        size: 20,
+                      ),
+                    ),
                   ),
                 ],
               ),
             ),
             ListTile(
-              title: Text("Reviews"),
+              title: Text(
+                "Reviews",
+                style: TextStyle(
+                  color: Colors.blue,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
               trailing: ElevatedButton.icon(
                 style: ButtonStyle(
                   backgroundColor: MaterialStateProperty.all(
-                    Colors.blue.shade700,
+                    Color(0xFF012A4A),
                   ),
                 ),
                 icon: Icon(Icons.more_horiz),
@@ -122,7 +178,13 @@ class _DoctorScreenState extends State<DoctorScreen> {
               ),
             ),
             ListTile(
-              title: Text("Booking : "),
+              title: Text(
+                "Booking : ",
+                style: TextStyle(
+                  color: Colors.blue,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
             ),
             TableCalendar(
               firstDay: kFirstDay,

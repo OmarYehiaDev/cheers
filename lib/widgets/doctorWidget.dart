@@ -45,7 +45,7 @@ class DoctorWidget extends StatelessWidget {
                         size: 20,
                       ),
                     ),
-                  )
+                  ),
                 ],
               ),
               Text(
