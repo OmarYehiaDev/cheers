@@ -12,75 +12,220 @@ class DoctorWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double height = MediaQuery.of(context).size.height;
+    double width = MediaQuery.of(context).size.width;
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Card(
-        color: Colors.lightBlue.shade400,
-        child: ListTile(
-          leading: Image.network(doctor.image),
-          title: Text(
-            "Dr. " + doctor.firstName + " " + doctor.lastName,
-            overflow: TextOverflow.ellipsis,
+        color: Color.fromRGBO(18, 55, 100, 0.65),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.only(
+            topRight: Radius.circular(
+              30,
+            ),
+            bottomLeft: Radius.circular(
+              30,
+            ),
+            topLeft: Radius.circular(
+              30,
+            ),
           ),
-          isThreeLine: true,
-          subtitle: Column(
+        ),
+        child: SizedBox(
+          width: width * 0.9,
+          height: height * 0.22,
+          child: Column(
             children: [
-              Text(
-                doctor.company.title,
-                overflow: TextOverflow.ellipsis,
+              ListTile(
+                leading: Image.network(
+                  doctor.image,
+                  height: height * 0.073,
+                ),
+                title: Center(
+                  child: Text(
+                    "Dr. " + doctor.firstName + " " + doctor.lastName,
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+                isThreeLine: true,
+                subtitle: Column(
+                  children: [
+                    Text(
+                      doctor.company.title,
+                      overflow: TextOverflow.ellipsis,
+                      style: TextStyle(
+                        color: Colors.white,
+                      ),
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          (doctor.weight / 10).floor().toString(),
+                          overflow: TextOverflow.ellipsis,
+                          style: TextStyle(
+                            color: Colors.white,
+                          ),
+                        ),
+                        Wrap(
+                          children: List<Widget>.generate(
+                            5,
+                            (index) => Icon(
+                              Icons.star,
+                              color: Colors.yellow,
+                              size: 20,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+                trailing: InkWell(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (_) => DoctorScreen(doctor: doctor),
+                      ),
+                    );
+                  },
+                  child: Container(
+                    height: height * 0.15,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.only(
+                        bottomLeft: Radius.circular(25),
+                        bottomRight: Radius.circular(25),
+                      ),
+                      color: Colors.yellowAccent,
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: Text(
+                        "View\nProfile",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          color: Color(0xFF012A4A),
+                          fontSize: 17,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(
-                    (doctor.weight / 10).floor().toString(),
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                  Wrap(
-                    children: List<Widget>.generate(
-                      5,
-                      (index) => Icon(
-                        Icons.star,
-                        color: Colors.yellow,
-                        size: 20,
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: RichText(
+                      text: TextSpan(
+                        text: "Session: ",
+                        style: TextStyle(
+                          shadows: kElevationToShadow[4],
+                          color: Colors.blue.shade600,
+                          fontWeight: FontWeight.bold,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                        children: [
+                          TextSpan(
+                            text: "${doctor.height} EGP",
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.normal,
+                            ),
+                          ),
+                        ],
                       ),
+                      overflow: TextOverflow.ellipsis,
                     ),
+                  ),
+                  RichText(
+                    text: TextSpan(
+                      text: "Specialized in: ",
+                      style: TextStyle(
+                        shadows: kElevationToShadow[4],
+                        color: Colors.blue.shade600,
+                        fontWeight: FontWeight.bold,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                      children: [
+                        TextSpan(
+                          text: "Depression, Anxiety",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.normal,
+                          ),
+                        ),
+                      ],
+                    ),
+                    overflow: TextOverflow.ellipsis,
                   ),
                 ],
               ),
-              Text(
-                "Session: ${doctor.height} EGP",
-                overflow: TextOverflow.ellipsis,
+              ElevatedButton(
+                style: ButtonStyle(
+                  fixedSize: MaterialStateProperty.all(
+                    Size.fromHeight(20),
+                  ),
+                  shape: MaterialStateProperty.all(
+                    RoundedRectangleBorder(
+                      borderRadius: BorderRadius.only(
+                        topRight: Radius.circular(
+                          30,
+                        ),
+                        bottomLeft: Radius.circular(
+                          30,
+                        ),
+                      ),
+                      side: BorderSide(
+                        color: Color(0xFF012A4A),
+                        width: 2,
+                      ),
+                    ),
+                  ),
+                  backgroundColor: MaterialStateProperty.all(
+                    Colors.transparent,
+                  ),
+                  // foregroundColor: MaterialStateProperty.all(
+                  //
+                  // ),
+                ),
+                child: Padding(
+                  padding: EdgeInsets.symmetric(horizontal: width * 0.3),
+                  child: Text(
+                    "Book",
+                    style: TextStyle(
+                      color: Color(0xFF012A4A),
+                      backgroundColor: Colors.transparent,
+                      fontSize: 17,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+                onPressed: () {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      backgroundColor: Colors.green,
+                      content: Text("Booked successfully"),
+                    ),
+                  );
+                },
               ),
             ],
-          ),
-          onTap: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (_) => DoctorScreen(doctor: doctor),
-              ),
-            );
-          },
-          trailing: ElevatedButton.icon(
-            style: ButtonStyle(
-              backgroundColor: MaterialStateProperty.all(
-                Colors.blue.shade700,
-              ),
-            ),
-            icon: Icon(Icons.call),
-            label: Text("Book"),
-            onPressed: () {
-              ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(
-                  backgroundColor: Colors.green,
-                  content: Text("Booked successfully"),
-                ),
-              );
-            },
           ),
         ),
       ),
     );
   }
 }
+/*
+
+*/
+/*
+
+        */
