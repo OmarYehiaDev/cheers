@@ -15,7 +15,7 @@ class TestWidget extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Card(
-        color: Colors.blue.shade900,
+        color: Color.fromRGBO(18, 55, 100, 0.65),
         child: Column(
           children: [
             Padding(
@@ -58,13 +58,40 @@ class TestWidget extends StatelessWidget {
               padding: const EdgeInsets.all(8.0),
               child: ElevatedButton(
                 style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all(
-                    Colors.white,
+                  fixedSize: MaterialStateProperty.all(
+                    Size.fromHeight(20),
                   ),
+                  shape: MaterialStateProperty.all(
+                    RoundedRectangleBorder(
+                      borderRadius: BorderRadius.only(
+                        topRight: Radius.circular(
+                          30,
+                        ),
+                        bottomLeft: Radius.circular(
+                          30,
+                        ),
+                      ),
+                      side: BorderSide(
+                        color: Colors.yellowAccent,
+                        width: 2,
+                      ),
+                    ),
+                  ),
+                  backgroundColor: MaterialStateProperty.all(
+                    Colors.transparent,
+                  ),
+                  // foregroundColor: MaterialStateProperty.all(
+                  //
+                  // ),
                 ),
                 child: Text(
                   "Start the test",
-                  style: TextStyle(color: Colors.black),
+                  style: TextStyle(
+                    color: Colors.yellowAccent,
+                    backgroundColor: Colors.transparent,
+                    fontSize: 17,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
                 onPressed: () {
                   ScaffoldMessenger.of(context).showSnackBar(
